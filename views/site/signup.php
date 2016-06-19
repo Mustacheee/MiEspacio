@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\SignUpForm */
+/* @var $model app\models\User */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -46,6 +46,7 @@ $this->title = 'Sign Up';
                 <?= $form->field($model, 'first_name')->textInput(['autofocus' => true]); ?>
                 <?= $form->field($model, 'last_name'); ?>
                 <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'password')->passwordInput(); ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>

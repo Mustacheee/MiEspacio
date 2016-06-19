@@ -5,6 +5,8 @@ namespace app\models;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use app\models\SignUpForm;
+use Yii;
+use yii\base\Model;
 
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -61,8 +63,18 @@ class User extends ActiveRecord implements IdentityInterface
     public function create($data)
     {
         if($this->load($data)){
-          //  $this->first_name = $data['first_name'];
-            $this->save();
+            $this->first_name = $data['User']['first_name'];
+
+//            $this->loadDefaultValues();
+            //hashify the password
+            if(isset($data['User']['password'])) {
+                $hash = Yii::$app->getSecurity()->generatePasswordHash($data['User']['password']);
+                $this->password = $hash;
+            }
+
+            if($this->save()){
+                return true;
+            }
         }
     }
 
