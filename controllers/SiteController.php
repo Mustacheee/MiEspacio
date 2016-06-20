@@ -9,6 +9,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use yii\base\UserException;
 //use app\models\ContactForm;
 
 class SiteController extends Controller
@@ -83,7 +84,7 @@ class SiteController extends Controller
         if(Yii::$app->request->isPost){
             $success = $model->create(Yii::$app->request->post());
             if($success){
-                $this->redirect('employee-profile');
+                $this->redirect('create-profile');
             } else {
                 throw new UserException;
             }
@@ -97,6 +98,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionEmployeeProfile()
+    {
+        return $this->render('employeeprofile');
+    }
+    
+    public function actionCreateProfile()
+    {
+        return $this->render('createprofile');
     }
 
 }

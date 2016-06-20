@@ -30,6 +30,6 @@ class m160612_071033_create_user_tables_two extends Migration
      */
     public function down()
     {
-        $this->dropTable('user_tables');
+        $this->dropTable('user');
     }
 }

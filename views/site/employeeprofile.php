@@ -5,7 +5,7 @@
 /* @var $model app\models\User */
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+    
 
 $this->title = 'Pollos User Profile';
 ?>
