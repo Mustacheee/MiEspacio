@@ -137,13 +137,18 @@ class SiteController extends Controller
     public function actionCreateProfile()
     {
         $model = new Profile();
-        
-        if(Yii::$app->request->isPost)
-            $model->createProfile(Yii::$app->request->post());
-            
+
+        if (Yii::$app->request->isPost) {
+            $success = $model->createProfile(Yii::$app->request->post());
+
+            //if creating profile is successful, send them to employee profile
+            if ($success) {
+                $this->redirect('employee-profile');
+            }
+        }
         return $this->render('createprofile', [
             'model' => $model,
         ]);
-    }
 
+    }
 }

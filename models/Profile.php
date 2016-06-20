@@ -56,9 +56,13 @@ class Profile extends ActiveRecord
 
     /**
      * @param $data
+     * @return bool
      */
     public function createProfile($data)
     {
-        
+        if($this->load($data)){
+            if($this->save())
+                return true;
+        }
     }
 }
