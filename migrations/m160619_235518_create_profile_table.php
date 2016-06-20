@@ -25,7 +25,7 @@ class m160619_235518_create_profile_table extends Migration
         $this->addForeignKey(
             'fk-user_id',
             'profile',
-            'id',
+            'user_id',
             'user',
             'id',
             'CASCADE'

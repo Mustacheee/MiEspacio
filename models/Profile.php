@@ -22,11 +22,17 @@ class Profile extends ActiveRecord
      */
 
 
+    /**
+     * @return string
+     */
     public static function tableName()
     {
         return 'profile';
     }
-    
+
+    /**
+     * @return array
+     */
     public function rules()
     {
         $rules = [
@@ -37,9 +43,22 @@ class Profile extends ActiveRecord
 
         return $rules;
     }
-    
-    public function createProfile()
+
+    /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return [
+            'aboutme' => 'About Me',
+        ];
+    }
+
+    /**
+     * @param $data
+     */
+    public function createProfile($data)
     {
         
     }
-} 
+}

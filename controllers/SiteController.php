@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\SignUpForm;
 use app\models\User;
+use app\models\Profile;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -14,6 +15,9 @@ use yii\base\UserException;
 
 class SiteController extends Controller
 {
+    /**
+     * @return array
+     */
     public function behaviors()
     {
         return [
@@ -37,6 +41,9 @@ class SiteController extends Controller
         ];
     }
 
+    /**
+     * @return array
+     */
     public function actions()
     {
         return [
@@ -50,11 +57,17 @@ class SiteController extends Controller
         ];
     }
 
+    /**
+     * @return string
+     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -70,6 +83,9 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * @return \yii\web\Response
+     */
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -77,6 +93,10 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
+    /**
+     * @return string
+     * @throws UserException
+     */
     public function actionSignUp()
     {
         $model = new User();
@@ -95,19 +115,35 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function actionAbout()
     {
         return $this->render('about');
     }
 
+    /**
+     * @return string
+     */
     public function actionEmployeeProfile()
     {
         return $this->render('employeeprofile');
     }
-    
+
+    /**
+     * @return string
+     */
     public function actionCreateProfile()
     {
-        return $this->render('createprofile');
+        $model = new Profile();
+        
+        if(Yii::$app->request->isPost)
+            $model->createProfile(Yii::$app->request->post());
+            
+        return $this->render('createprofile', [
+            'model' => $model,
+        ]);
     }
 
 }

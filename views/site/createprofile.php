@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <div class="col-lg-5">
         <?php $form = ActiveForm::begin(['id' => 'create-profile']); ?>
-        <?= $form->field($model, 'about_me'); ?>
+        <?= $form->field($model, 'aboutme'); ?>
         <div class="form-group">
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
         </div>
